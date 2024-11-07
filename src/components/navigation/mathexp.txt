@@ -1,0 +1,85 @@
+AngleRad
+Why is it calculated?
+
+To position each button evenly around a circle.
+The angleIncrement determines the angular distance between each button.
+Converting this angle to radians is necessary for trigonometric calculations (sine and cosine) used to determine the button's position.
+How it's calculated:
+
+JavaScript
+const angleRad = (index * angleIncrement * Math.PI) / 180;
+Use code with caution.
+
+index: The current button's index in the BtnList.
+angleIncrement: The angular distance between buttons.
+Math.PI: A constant representing the value of pi (approximately 3.14159).
+The formula converts the angle from degrees to radians by multiplying it by Math.PI/180.
+Radius and calc
+Radius:
+
+Determines the distance of the buttons from the center of the circle.
+It's set using the calc function in CSS to dynamically calculate the value based on the viewport width.
+calc(20vw - 1rem):
+20vw: 20% of the viewport width.
+- 1rem: Subtracts 1 rem (a relative unit, often equivalent to the font size) from the calculated width.
+calc:
+
+A CSS function that allows you to perform calculations directly within CSS values.
+It's used here to create flexible layouts that adapt to different screen sizes.
+X and Y Calculations
+X-coordinate:
+
+JavaScript
+const x = `calc(${radius} * ${Math.cos(angleRad)})`;
+
+
+Uses the cosine function to determine the horizontal position of the button relative to the center.
+The cosine of the angle, multiplied by the radius, gives the x-coordinate.
+A positive value moves the button to the right, and a negative value moves it to the left.
+Y-coordinate:
+
+JavaScript
+const y = `calc(${radius} * ${Math.sin(angleRad)})`;
+
+
+Uses the sine function to determine the vertical position of the button relative to the center.
+The sine of the angle, multiplied by the radius, gives the y-coordinate.
+A positive value moves the button downwards, and a negative value moves it upwards.
+By combining these calculations, the buttons are positioned in a circular pattern around the center of the screen. The translate CSS function is used to apply the calculated x and y positions to each button.
+
+
+
+
+
+
+
+
+
+
+
+1. vw (Viewport Width):
+
+A relative unit that represents a percentage of the viewport width.
+In this case, 20vw means 20% of the current viewport width.
+This ensures that the radius of the circle adapts to different screen sizes.
+2. rem (Root em):
+
+A relative unit that is relative to the font-size of the root element (usually the <html> element).
+In this case, 1rem is likely used to adjust the radius slightly, perhaps to compensate for any design or layout considerations.
+Why use vw and rem together?
+
+Flexibility: The combination of vw and rem provides flexibility in adjusting the radius based on screen size and font size.
+Responsiveness: The vw unit ensures that the navigation menu scales appropriately on different devices.
+Precision: The rem unit allows for fine-tuning the radius, taking into account font sizes and other design factors.
+
+Attributes:
+
+href: The URL to navigate to when clicked.
+
+className: CSS classes for styling, including text color, rounded borders, and centering content.
+
+aria-label: Provides an accessible label for screen readers.
+
+target: Determines where to open the linked document (e.g., _blank for a new tab, _self for the same tab).
+
+name: Gives a name to the link, useful for identifying or interacting with the element in scripts or CSS.
