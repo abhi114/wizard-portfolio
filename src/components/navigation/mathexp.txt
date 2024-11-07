@@ -83,3 +83,10 @@ aria-label: Provides an accessible label for screen readers.
 target: Determines where to open the linked document (e.g., _blank for a new tab, _self for the same tab).
 
 name: Gives a name to the link, useful for identifying or interacting with the element in scripts or CSS.
+
+
+//inset: This keyword makes the shadow an inset shadow, which means it appears inside the element's border.
+
+//0 17px 5px -9px: These values specify the horizontal offset (0), vertical offset (17px), blur radius (5px), and spread radius (-9px) of the shadow.
+
+//rgba(254,254,91,0.05): This is the color of the shadow, using RGBA format with 5% opacity (a very light yellow color).
