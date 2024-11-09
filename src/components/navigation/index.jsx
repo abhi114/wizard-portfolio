@@ -12,6 +12,7 @@ const Navigation = () => {
         {BtnList.map((btn,index)=>{
             //formulae to convert angle to radian
             const angleRad = (index*angleIncrement*Math.PI)/180
+            console.log(angleRad)
             const radius = 'calc(21vw - 1rem)'
             const x = `calc(${radius}*${Math.cos(angleRad)})`
             const y = `calc(${radius}*${Math.sin(angleRad)})`
