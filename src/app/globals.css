@@ -15,6 +15,8 @@
 .pause{
   animation-play-state: paused;
 }
+/* By using the @apply directive, you combine multiple Tailwind CSS utility classes into one custom class, making it easier to reuse and maintain. 
+This approach is particularly helpful for complex styles or components that require multiple utility classes. */
 .custom-bg{
   @apply bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px] shadow-glass-inset hover:shadow-glass-sm;
 }
