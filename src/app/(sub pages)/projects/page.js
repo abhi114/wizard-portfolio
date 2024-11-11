@@ -8,7 +8,7 @@ import StaffModel from "@/components/modals/Staff";
 
 export default function Home() {
   return (
-    <main >
+    <>
       <Image
         src={bg}
         alt="background-image"
@@ -21,6 +21,6 @@ export default function Home() {
           <StaffModel />
         </RenderModal>
       </div>
-    </main>
+    </>
   );
 }

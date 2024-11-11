@@ -9,7 +9,7 @@ import AboutDetails from "@/components/about";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Image
         src={bg}
         alt="background-image"
@@ -22,12 +22,12 @@ export default function Home() {
         </RenderModal>
       </div>
       <div className="relative w-full h-screen flex flex-col items-center justify-center ">
-        <div className="absolute flex flex-col items-center text-center top-[68%] left-1/2 -translate-y-1/2 -translate-x-1/2">
+        <div className="absolute flex flex-col items-center text-center top-[65%] left-1/2 -translate-y-1/2 -translate-x-1/2">
           <h1 className="font-bold text-7xl text-accent p-3 text-nowrap">Abhishek Nigam</h1>
-          <p className="font-light text-foreground text-ls p-2">Meet the Wizard Behind this Portfolio</p>
+          <p className="font-light text-foreground text-ls">Meet the Wizard Behind this Portfolio</p>
         </div>
       </div>
       <AboutDetails/>
-    </main>
+    </>
   );
 }
