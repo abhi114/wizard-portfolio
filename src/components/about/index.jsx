@@ -39,6 +39,10 @@ In mobile development, I specialize in creating responsive Android apps using Re
             <ItemLayout className={"col-span-8 !p-0"}>
                 <img className='w-full h-auto' src='https://github-readme-stats.vercel.app/api?username=abhi114&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false' alt='Abhishek' loading='lazy'/>
             </ItemLayout>
+
+             <ItemLayout className={"col-span-full"}>
+                <img className='w-full h-auto' src='https://skillicons.dev/icons?i=appwrite,aws,babel,bootstrap,cloudflare,css,d3,docker,figma,firebase,gatsby,git,github,graphql,html,ipfs,js,jquery,kubernetes,linux,mongodb,mysql,netlify,nextjs,nodejs,npm,postgres,react,redux,replit,sass,supabase,tailwind,threejs,vercel,vite,vscode,yarn' alt='Abhishek' loading='lazy'/>
+            </ItemLayout>
             
            
             
