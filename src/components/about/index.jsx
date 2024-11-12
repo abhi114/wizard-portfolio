@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import Link from 'next/link'
 import React from 'react'
 
 const ItemLayout = ({children,className})=>{
@@ -44,7 +45,14 @@ In mobile development, I specialize in creating responsive Android apps using Re
                 <img className='w-full h-auto' src='https://skillicons.dev/icons?i=appwrite,aws,babel,bootstrap,cloudflare,css,d3,docker,figma,firebase,gatsby,git,github,graphql,html,ipfs,js,jquery,kubernetes,linux,mongodb,mysql,netlify,nextjs,nodejs,npm,postgres,react,redux,replit,sass,supabase,tailwind,threejs,vercel,vite,vscode,yarn' alt='Abhishek' loading='lazy'/>
             </ItemLayout>
             
-           
+            <ItemLayout className={"col-span-6 !p-0"}>
+                <img className='w-full h-auto' src="https://github-readme-streak-stats.herokuapp.com?user=abhi114&theme=dark&hide_border=true&type=png&background=EB545400&ring=FEFE5B&currStreakLabel=FEFE5B" alt="GitHub Streak" loading='lazy'/>
+            </ItemLayout>
+            <ItemLayout className={"col-span-6 !p-0"}>
+                <Link className=' w-full h-auto' href={'https://github.com/abhi114/ai-calculator'} target={"_blank"}>
+                <img className='w-full h-auto' src='https://github-readme-stats.vercel.app/api/pin/?username=abhi114&repo=ai-calculator&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false&description_lines_count=2' alt='Abhishek' loading='lazy'/>
+                </Link>
+            </ItemLayout>
             
         </div>
     </section>
