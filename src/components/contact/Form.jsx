@@ -37,11 +37,11 @@ export default function Form() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='max-w-md w-full flex flex-col items-center justify-center space-y-4'>
       <input type="text" placeholder="Name" {...register("Name", {required:'This Field is Required',minLength:{value:3,message:"Name should be atleast 3 characters long"}})} className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'/>
-      {errors.Name && <span className='inline-block self-start text-accent'>{errors.Name.message}</span>}
+      {errors.Name && <span className='inline-block self-start text-accent text-sm custom-bg rounded-md p-1'>{errors.Name.message}</span>}
       <input type="email" placeholder="email" {...register("email", {required: 'This Field is Required'})} className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'/>
-      {errors.email && <span className='inline-block self-start text-accent'>{errors.email.message}</span>}
+      {errors.email && <span className='inline-block self-start text-accent text-sm custom-bg rounded-md p-1'>{errors.email.message}</span>}
       <textarea placeholder='message' {...register("message", {required: 'This Field is Required', maxLength:{value:500,message:'Message Should be less than 500 characters'}, minLength:{value:50,message:'Message Should be atleast 50 characters'}})} className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'/>
-       {errors.message && <span className='inline-block self-start text-accent'>{errors.message.message}</span>}
+       {errors.message && <span className='inline-block self-start text-accent text-sm custom-bg rounded-md p-1'>{errors.message.message}</span>}
       <input value={"Cast Your Message"} className='px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid hover:shadow-glass-sm backdrop:blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg cursor-pointer capitalize' type="submit" />
     </form>
   );
