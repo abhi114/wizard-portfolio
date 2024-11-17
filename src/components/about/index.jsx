@@ -1,14 +1,10 @@
+"use client"
 import clsx from 'clsx'
 import Link from 'next/link'
 import React from 'react'
+import { motion } from 'framer-motion'
+import ItemLayout from './ItemLayout'
 
-const ItemLayout = ({children,className})=>{
-  return (
-    <div className={clsx('custom-bg p-6 sm:p-8 rounded-xl flex items-center justify-center space-y-8',className)}>
-                {children}
-            </div>
-  )
-}
  const AboutDetails = () => {
   return (
     <section className='py-20 w-full'>
