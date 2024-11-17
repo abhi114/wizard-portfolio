@@ -46,7 +46,7 @@ const Navigation = () => {
             //formulae to convert angle to radian
            
             return (
-                <NavButton key={btn.label} x={0} y={0} {...btn}/>
+                <NavButton key={btn.label} x={0} y={0} {...btn} labelDirection='left'/>
                 
             )
         })}

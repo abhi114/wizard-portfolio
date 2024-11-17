@@ -2,6 +2,7 @@ import { Github, Home, Linkedin, Notebook, Palette, Phone, Twitter, User } from 
 import Link from 'next/link';
 import React from 'react';
 import ResponsiveComponent from '../ResponsiveComponent';
+import clsx from 'clsx';
 const getIcon = (icon)=>{
   switch (icon) {
     case 'home':
@@ -33,7 +34,7 @@ const getIcon = (icon)=>{
       return <Home className='w-full h-auto' strokeWidth={1.5}/>
   }
 }
-const NavButton = ({ x, y, label, link, icon, newTab }) => {
+const NavButton = ({ x, y, label, link, icon, newTab ,labelDirection="right"}) => {
   // backdrop-blur-[6px]: Applies a backdrop blur effect with a 6px radius, creating a frosted glass effect behind the element.
   //group: This class marks the parent <div> as a group. Any child elements can now respond to the parent’s hover state.
   //The peer and peer-hover classes in Tailwind CSS are used to create dependencies between sibling elements, enabling styles to be applied to one element based on the state of another.
@@ -59,7 +60,7 @@ const NavButton = ({ x, y, label, link, icon, newTab }) => {
       <span className='relative w-10 h-10 xs:w-14 xs:h-14 p-2.5 xs:p-4 hover:text-accent'>
         {getIcon(icon)}
         <span className='peer bg-transparent absolute top-0 left-0 w-full h-full'/>
-        <span className='absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap'>{label}</span>
+        <span className={clsx('absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap',labelDirection === 'left' ? "right-full left-auto" : "")}>{label}</span>
       </span>
       
       </Link>
