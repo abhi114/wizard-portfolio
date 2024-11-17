@@ -2,18 +2,26 @@
 import { BtnList } from '@/app/data'
 import React from 'react'
 import NavButton from './NavButton';
+import useScreenSize from '../hooks/useScreenSize';
+import ResponsiveComponent from '../ResponsiveComponent';
 
 const Navigation = () => {
     const angleIncrement = 360/BtnList.length;
-
+    const size = useScreenSize();
+    console.log(size);
+    const isLarge = size >=1024;
+    const isMedium = size >=768;
   return (
     <div className='w-full fixed h-screen flex items-center justify-center'>
-        <div className='flex items-center justify-center hover:pause relative animate-spin-slow group'>
+       <ResponsiveComponent>
+        {({size})=>{
+          return size && size>=480?
+           <div className='flex items-center justify-center hover:pause relative animate-spin-slow group'>
         {BtnList.map((btn,index)=>{
             //formulae to convert angle to radian
             const angleRad = (index*angleIncrement*Math.PI)/180
-            console.log(angleRad)
-            const radius = 'calc(21vw - 1rem)'
+            //console.log(angleRad)
+            const radius = isLarge ?'calc(21vw - 1rem)':isMedium ? 'calc(30vw - 1rem)' : 'calc(40vw - 1rem)'
             const x = `calc(${radius}*${Math.cos(angleRad)})`
             const y = `calc(${radius}*${Math.sin(angleRad)})`
             return (
@@ -21,7 +29,32 @@ const Navigation = () => {
                 
             )
         })}
+        </div>:(
+          <>
+          <div className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-start xs:items-center justify-center  relative  group'>
+        {BtnList.slice(0,BtnList.length/2).map((btn,index)=>{
+            //formulae to convert angle to radian
+           
+            return (
+                <NavButton key={btn.label} x={0} y={0} {...btn}/>
+                
+            )
+        })}
         </div>
+        <div className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-end xs:items-center justify-center  relative  group'>
+        {BtnList.slice(BtnList.length/2,BtnList.length).map((btn,index)=>{
+            //formulae to convert angle to radian
+           
+            return (
+                <NavButton key={btn.label} x={0} y={0} {...btn}/>
+                
+            )
+        })}
+        </div>
+          </>
+        )
+        }}
+       </ResponsiveComponent>
     </div>
   )
 }
