@@ -1,11 +1,12 @@
 "use client"
 import clsx from 'clsx'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import ItemLayout from './ItemLayout'
 
  const AboutDetails = () => {
+     const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <section className='py-20 w-full'>
         <div className='grid grid-cols-12 gap-4 xs:gap-6 md:gap-8 w-full'>
@@ -41,10 +42,19 @@ In mobile development, I specialize in creating responsive Android apps using Re
                 <img className='w-full h-auto' src='https://skillicons.dev/icons?i=appwrite,aws,babel,bootstrap,cloudflare,css,d3,docker,figma,firebase,gatsby,git,github,graphql,html,ipfs,js,jquery,kubernetes,linux,mongodb,mysql,netlify,nextjs,nodejs,npm,postgres,react,redux,replit,sass,supabase,tailwind,threejs,vercel,vite,vscode,yarn' alt='Abhishek' loading='lazy'/>
             </ItemLayout>
             
-            <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-                <img className='w-full h-auto' src="https://github-readme-streak-stats.herokuapp.com?user=abhi114&theme=dark&hide_border=true&type=png&background=EB545400&ring=FEFE5B&currStreakLabel=FEFE5B" alt="GitHub Streak" loading='lazy'/>
-            </ItemLayout>
-            <ItemLayout className={"col-span-full  md:col-span-6 !p-0"}>
+             {imageLoaded && (
+                <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
+                    <img 
+                        className="w-full h-auto" 
+                        src="https://github-readme-streak-stats.herokuapp.com?user=abhi114&theme=dark&hide_border=true&type=png&background=EB545400&ring=FEFE5B&currStreakLabel=FEFE5B" 
+                        alt="GitHub Streak" 
+                        loading="lazy" 
+                        onLoad={() => setImageLoaded(true)}
+                        onError={() => setImageLoaded(false)} 
+                    />
+                </ItemLayout>
+            )}
+            <ItemLayout className={`col-span-full ${imageLoaded == true  ? "md:col-span-6": "md:col-span-full"} !p-0`}>
                 <Link className=' w-full h-auto' href={'https://github.com/abhi114/ai-calculator'} target={"_blank"}>
                 <img className='w-full h-auto' src='https://github-readme-stats.vercel.app/api/pin/?username=abhi114&repo=ai-calculator&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false&description_lines_count=2' alt='Abhishek' loading='lazy'/>
                 </Link>
