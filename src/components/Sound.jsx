@@ -36,36 +36,54 @@ const Sound = () => {
     const audioRef = useRef(null)
     const [isPlaying, setIsPlaying] = useState(false)
     const [showModal,setShowModal] = useState(false);
-    const handleFirstUserInteraction = ()=>{
-        const musicConsent = localStorage.getItem("musicConsent");
-        if(musicConsent === 'true' && !isPlaying){
-            audioRef.current.play();
-            setIsPlaying(true);
-        }
-         ["click","keydown","touchstart"].forEach((event)=>{
-                document.removeEventListener(event,handleFirstUserInteraction)
-            })
-    }
+   
     useEffect(() => {
-      const consent = localStorage.getItem("musicConsent");
-      const consentTime = localStorage.getItem("consentTime");
-      console.log("consnet is " + consent)
-      if(consent && consentTime && new Date(consentTime).getTime() + 3*24*60*60*1000 > new Date()){
-        setIsPlaying(consent==="true")
-        if(consent === "true"){
-            ["click","keydown","touchstart"].forEach((event)=>{
-                document.addEventListener(event,handleFirstUserInteraction)
-            })
-        }
-      }else{
-        console.log("hit here")
-        setShowModal(true)
-      }
+    const consent = localStorage.getItem("musicConsent");
+    const consentTime = localStorage.getItem("consentTime");
+    console.log("consent is " + consent);
     
-      return () => {
-        
-      }
-    }, [])
+    const interactionEvents = ["click", "keydown", "touchstart"];
+    
+    const handleFirstUserInteraction = () => {
+        const musicConsent = localStorage.getItem("musicConsent");
+        if (musicConsent === "true" && !isPlaying) {
+            audioRef.current
+                .play()
+                .then(() => {
+                    setIsPlaying(true);
+                })
+                .catch((error) => {
+                    console.error("Error playing audio:", error);
+                });
+        }
+
+        // Remove listeners after the first interaction
+        interactionEvents.forEach((event) => {
+            document.removeEventListener(event, handleFirstUserInteraction);
+        });
+    };
+
+    if (consent && consentTime && new Date(consentTime).getTime() + 3 * 24 * 60 * 60 * 1000 > new Date()) {
+        setIsPlaying(consent === "true");
+        if (consent === "true") {
+            // Add interaction listeners for mobile and desktop
+            interactionEvents.forEach((event) => {
+                document.addEventListener(event, handleFirstUserInteraction, { passive: true });
+            });
+        }
+    } else {
+        console.log("hit here");
+        setShowModal(true);
+    }
+
+    return () => {
+        // Clean up event listeners
+        interactionEvents.forEach((event) => {
+            document.removeEventListener(event, handleFirstUserInteraction);
+        });
+    };
+}, []);
+
     
     const toggle = ()=>{
         const newState = !isPlaying;
