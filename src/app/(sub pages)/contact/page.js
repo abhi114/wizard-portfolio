@@ -2,16 +2,21 @@ import Image from "next/image";
 import bg from "../../../../public/background/contact-background.png";
 
 import RenderModal from "@/components/RenderModal";
-import StaffModel from "@/components/modals/Staff";
-import { HatModel } from "@/components/modals/Hat";
+
+//import { HatModel } from "@/components/modals/Hat";
 import AboutDetails from "@/components/about";
 import Form from "@/components/contact/Form";
-
+import dynamic from "next/dynamic";
+const HatModel = dynamic(() => import("@/components/modals/Hat"), {
+  ssr: false,
+});
 
 export default function Contact() {
   return (
     <>
       <Image
+        priority
+        sizes="100vw"
         src={bg}
         alt="background-image"
         className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-25"
@@ -30,7 +35,7 @@ export default function Contact() {
             magic in response.
           </p>
         </div>
-        <Form/>
+        <Form />
       </article>
     </>
   );
